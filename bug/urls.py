@@ -4,14 +4,15 @@ from . import views
 app_name = 'bug'
 
 urlpatterns = [
-    # path('projects/', views.ProjectListView.as_view(), name='project_list'),
-    # path('projects/<int:pk>/', views.ProjectDetailView.as_view(), name='project_detail'),
-    # path('projects/create/', views.ProjectCreateView.as_view(), name='project_create'),
-    # path('projects/<int:pk>/update/', views.ProjectUpdateView.as_view(), name='project_update'), # permissions for creator only     
-    # path('projects/<int:pk>/delete/', views.ProjectDeleteView.as_view(), name='project_delete'), # permissions for creator only     
-    # path('bugs/', views.BugListView.as_view(), name='bug_list'),
-    # path('bugs/<int:pk>/', views.BugDetailView.as_view(), name='bug_detail'), # bugs created by owner or in progress
-    # path('bugs/create/', views.BugCreateView.as_view(), name='bug_create'),
-    # path('bugs/<int:pk>/update/', views.BugUpdateView.as_view(), name='bug_update'),
-    # path('bugs/<int:pk>/delete/', views.BugDeleteView.as_view(), name='bug_delete'),
+    # path('front/', views.front, name='front'),
+    path('', views.project_list, name='project_list'), #/api
+    path('projects/<int:pk>/', views.project_detail, name='project_detail'),
+    path('projects/create/', views.project_create, name='project_create'),
+    path('projects/<int:pk>/update/', views.project_update, name='project_update'),
+    path('projects/<int:pk>/delete/', views.project_delete, name='project_delete'),
+    path('bug/', views.bug_list, name='bug_list'),
+    path('bug/<int:pk>/', views.bug_detail, name='bug_detail'),
+    path('bug/create/', views.bug_create, name='bug_create'),
+    path('bug/<int:pk>/update/', views.bug_update, name='bug_update'),
+    path('bug/<int:pk>/delete/', views.bug_delete, name='bug_delete'),
 ]
