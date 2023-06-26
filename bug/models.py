@@ -6,7 +6,7 @@ class Project(models.Model):
     due_date = models.DateField()
     # update after User app and migrate
     # members = models.ManyToManyField('User', related_name='projects')
-
+    
     def get_bugs(self):
         return self.issues.all()
 

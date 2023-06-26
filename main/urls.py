@@ -19,6 +19,7 @@ from bug.views import front
 # specfic to general
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("o/", include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('bug/', include('bug.urls')),
     path("", front, name="front"),
 ]
