@@ -1,17 +1,15 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.conf import settings  # new
 from oauth2_provider.models import AbstractApplication
-from bug.models import Bug, Project
+# AUTH_USER_MODEL = 'user.EndUser'
+# User = get_user_model()   -  currently active user model
 
 class EndUser(AbstractUser):
-    
-    # user_permissions = models.ManyToManyField('auth.Permission', related_name='end_users')
 
-    # bugs = models.ManyToManyField(Bug, related_name='users_bug')
-    # projects = models.ManyToManyField(Project, related_name='users_projects')
     user_permissions = models.ManyToManyField('auth.Permission', related_name='end_users')
-    projects = models.ManyToManyField(Project, related_name='users', blank=True)
-    bugs = models.ManyToManyField(Bug, related_name='users_bug', blank=True)
+    managing_projects = models.ManyToManyField('bug.Project', related_name='users', blank=True)
+    bugs = models.ManyToManyField('bug.Bug', related_name='users_bug', blank=True)
 
 
     def __str__(self):
@@ -27,7 +25,7 @@ class OAuthApplication(AbstractApplication):
     # name: The name of the OAuth application.
     # client_id: The client identifier of the application.
     # client_secret: The client secret of the application.
-    # user: The user associated with the application.
+    # user:The user associated with the application.
     
     pass
 

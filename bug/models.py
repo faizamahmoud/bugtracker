@@ -2,9 +2,9 @@ from datetime import timezone
 from django.db import models
 from django.contrib.auth import get_user_model
 
-default_user = get_user_model().objects.first()
+# default_user = get_user_model().objects.first()
 class Project(models.Model):
-    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=default_user)
+    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     project_name = models.CharField(max_length=100)
     members = models.ManyToManyField(get_user_model(), related_name='projects')
     bugs = models.ManyToManyField('Bug', related_name='projects')
