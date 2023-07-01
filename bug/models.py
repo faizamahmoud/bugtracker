@@ -4,7 +4,9 @@ from django.contrib.auth import get_user_model
 
 
 class Project(models.Model):
-    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,null=True, default="")
+    
+    # creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,null=True, default="")
+    creator = models.CharField(max_length=50, null=True)
     project_name = models.CharField(max_length=100)
     members = models.ManyToManyField(get_user_model(), related_name='projects')
     bugs = models.ManyToManyField('Bug', related_name='projects')
