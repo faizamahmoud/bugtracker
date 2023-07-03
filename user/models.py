@@ -6,10 +6,7 @@ from django.db import models
 class EndUser(AbstractUser):
     pass
     nickname = models.CharField(max_length=50, null=True, default="Harry")
-    # user_permissions = models.ManyToManyField('auth.Permission', related_name='end_users')
-    # managing_projects = models.ManyToManyField('bug.Project', related_name='users', blank=True)
-    # bugs = models.ManyToManyField('bug.Bug', related_name='users_bug', blank=True)
-
+    
 
     def __str__(self):
         return self.username
